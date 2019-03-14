@@ -4,7 +4,6 @@
 struct DictionaryEntry
 {
     wchar_t* m_trad;
-    wchar_t* m_simpl;
     wchar_t* m_pinyin;
     wchar_t* m_english;
     bool Parse(wchar_t* buff, size_t ibIn, size_t ibMax, size_t* ibOut);
@@ -87,7 +86,7 @@ private:
 
 Dictionary::Dictionary()
 {
-    FILE* src = fopen("cedict_ts.u8", "rt+, ccs=UTF-8");
+    FILE* src = fopen("cedict_ts.u8", "rt, ccs=UTF-8");
     m_buff = new wchar_t[FILESIZE];
     size_t count = fread(m_buff, sizeof(wchar_t), FILESIZE, src);
     fclose(src);
